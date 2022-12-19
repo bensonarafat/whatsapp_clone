@@ -1,8 +1,9 @@
 import React from 'react';
 import "./SidebarChat.css"
+import db from './firebase'
+import { collection, doc, setDoc } from "firebase/firestore";
 
-
-function SideBarChat ({ addNewChat}) {
+function SideBarChat ({ id, name, addNewChat}) {
 
     const [seed, setSeed] = React.useState('');
     const style = {
@@ -15,13 +16,15 @@ function SideBarChat ({ addNewChat}) {
     
     const createChat = () => {
         const roomName = prompt("Please enter name for chat");
-        console.log(roomName);
+        const newRoom = doc(collection(db, "rooms"));
+        setDoc(newRoom, {name: roomName});
     }
+
     return !addNewChat ? (
         <div className="sidebarChat">
             <img style={style} src={`https://avatars.dicebear.com/api/human/${seed}.svg`} alt={seed}/>
             <div className="sidebarChat__info">
-                <h2>Room name</h2>
+                <h2>{name}</h2>
                 <p> 
                     Last Messages... 
                 </p>
