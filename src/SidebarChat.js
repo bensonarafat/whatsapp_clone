@@ -2,8 +2,10 @@ import React from 'react';
 import "./SidebarChat.css"
 import db from './firebase'
 import { collection, doc, setDoc } from "firebase/firestore";
+import { Link } from "react-router-dom"
 
 function SideBarChat ({ id, name, addNewChat}) {
+
 
     const [seed, setSeed] = React.useState('');
     const style = {
@@ -21,6 +23,7 @@ function SideBarChat ({ id, name, addNewChat}) {
     }
 
     return !addNewChat ? (
+        <Link to={`/rooms/${id}`}>
         <div className="sidebarChat">
             <img style={style} src={`https://avatars.dicebear.com/api/human/${seed}.svg`} alt={seed}/>
             <div className="sidebarChat__info">
@@ -30,6 +33,7 @@ function SideBarChat ({ id, name, addNewChat}) {
                 </p>
             </div>
         </div>
+        </Link>
     ) : 
     (
         <div onClick={createChat} className="sidebarChat">

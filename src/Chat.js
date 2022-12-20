@@ -7,10 +7,10 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import MicIcon from '@mui/icons-material/Mic';
-
+import { useParams } from "react-router-dom"
 function Chat() {
     const [input, setInput] = React.useState();
-
+    const { roomId } = useParams();
     const sendMessage = (e) => {
         e.preventDefault();
         console.log(`You type ${input}`);
