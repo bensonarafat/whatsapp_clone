@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Sidebar.css";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { IconButton } from '@mui/material';
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -9,9 +8,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import SideBarChat from './SidebarChat'
 import db from './firebase'
 import { onSnapshot, collection, query, } from "firebase/firestore";
+import { useStateValue } from './StateProvider'
 
 function Sidebar() {
-
+  const [{user}, dispatch] = useStateValue();
   const [rooms, setRooms] = React.useState([]);
   React.useEffect(() => {
 
@@ -24,10 +24,18 @@ function Sidebar() {
     })
   }, [])
 
+  //style 
+  const style = {
+    width: '50px', 
+    height: '50px',
+    borderRadius: '100%',
+  }
   return (
     <div className="sidebar">
         <div className="sidebar__header">
-            <AccountCircleIcon/>
+          
+            <img src={user.photoURL} alt={user.displayName} referrerpolicy="no-referrer" style={style}/>
+
             <div className="sidebar_headerRight">
               <IconButton>
                 <DonutLargeIcon/>
