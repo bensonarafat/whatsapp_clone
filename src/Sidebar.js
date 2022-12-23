@@ -34,7 +34,7 @@ function Sidebar() {
     <div className="sidebar">
         <div className="sidebar__header">
           
-            <img src={user.photoURL} alt={user.displayName} referrerpolicy="no-referrer" style={style}/>
+            <img src={user.photoURL} alt={user.displayName} referrerPolicy="no-referrer" style={style}/>
 
             <div className="sidebar_headerRight">
               <IconButton>
