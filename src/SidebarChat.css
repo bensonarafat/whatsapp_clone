@@ -15,3 +15,7 @@
 .sidebarChat__info{
     margin-left: 15px;
 }
+.sidebar_chats a {
+    color: black;
+    text-decoration: none;
+}
